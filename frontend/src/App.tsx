@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
 import { BrowserRouter as Switch } from 'react-router-dom';
+//import { BrowserRouter as Switch } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 //import Home from './pages/Home';
 import Login from './components/Auth/Login';
@@ -22,7 +23,7 @@ import Notification from './components/Notification';
 
 const App = () => {
   return (
-    <AuthProvider>
+    <AuthProvider children={undefined}>
       <Router>
         <Switch>
           {/*<Route path="/"  Component={Home} />*/}
