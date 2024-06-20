@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const MentorshipList = () => {
-  const [mentors, setMentors] = useState([]);
-
+// Define the type for a Mentor object
+type Mentor = {
+  _id: string;
+  bio: string;
+  user: {
+    name: string;
+  };
+};
+// Use the Mentor type for the mentors state
+const MentorshipList: React.FC = () => {
+  const [mentors, setMentors] = useState<Mentor[]>([]);
   useEffect(() => {
     const fetchMentors = async () => {
       try {
-        const response = await axios.get('/api/mentors');
+        const response = await axios.get<Mentor[]>('/api/mentors');
         setMentors(response.data);
       } catch (error) {
         console.error('Error fetching mentors:', error);
@@ -15,7 +22,7 @@ const MentorshipList = () => {
     };
     fetchMentors();
   }, []);
-
+  
   return (
     <div className="p-6 bg-white rounded-md shadow-md mt-6">
       <h2 className="text-2xl font-bold">Mentors</h2>
