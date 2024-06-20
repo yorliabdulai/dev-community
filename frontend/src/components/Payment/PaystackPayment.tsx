@@ -1,11 +1,18 @@
 import React from 'react';
 import { usePaystackPayment } from 'react-paystack';
-
-const PaystackPayment = ({ email, amount, onSuccess, onClose }) => {
+// Define the type for the PaystackPayment component
+type PaystackPaymentProps = {
+  email: string;
+  amount: number;
+  onSuccess: (response: any) => void;
+  onClose: () => void;
+};
+// use the PaystackPaymentProps type for the PaystackPayment component
+const PaystackPayment: React.FC<PaystackPaymentProps> = ({ email, amount, onSuccess, onClose }) => {
   const config = {
     email,
     amount,
-    publicKey: 'your-paystack-public-key',
+    publicKey: 'your-paystack-public-key'
   };
 
   const initializePayment = usePaystackPayment(config);
@@ -15,7 +22,7 @@ const PaystackPayment = ({ email, amount, onSuccess, onClose }) => {
       <button
         className="p-3 bg-green-500 text-white rounded-md hover:bg-green-600"
         onClick={() => {
-          initializePayment(onSuccess, onClose);
+          initializePayment({ onSuccess });
         }}
       >
         Pay with Paystack
