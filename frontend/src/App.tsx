@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { BrowserRouter as Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+//import { BrowserRouter as Switch } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 //import Home from './pages/Home';
 import Login from './components/Auth/Login';
@@ -20,9 +20,9 @@ import PaystackPayment from './components/Payment/PaystackPayment';
 import Notification from './components/Notification';
 //import NotFound from './pages/NotFound';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <AuthProvider>
+    <AuthProvider children={undefined}>
       <Router>
         <Switch>
           {/*<Route path="/"  Component={Home} />*/}
