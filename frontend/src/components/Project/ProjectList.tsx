@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+// Define the type for a Project object
+type Project = {
+  _id: string;
+  title: string;
+  description: string;
+};
+
+// Use the Project type for the projects state
 
 const ProjectList = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
