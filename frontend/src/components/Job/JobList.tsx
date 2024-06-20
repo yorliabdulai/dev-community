@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const JobList = () => {
-  const [jobs, setJobs] = useState([]);
+// Define the type for a Job object
+type Job = {
+  _id: string;
+  title: string;
+  description: string;
+};
+
+const JobList: React.FC = () => {
+  // Use the Job type for the jobs state
+  const [jobs, setJobs] = useState<Job[]>([]);
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('/api/jobs');
+        const response = await axios.get<Job[]>('/api/jobs');
         setJobs(response.data);
       } catch (error) {
         console.error('Error fetching jobs:', error);
