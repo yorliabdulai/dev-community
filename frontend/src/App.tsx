@@ -23,7 +23,7 @@ import Notification from './components/Notification';
 
 const App = () => {
   return (
-    <AuthProvider children={undefined}>
+    <AuthProvider>
       <Router>
         <Switch>
           {/*<Route path="/"  Component={Home} />*/}
