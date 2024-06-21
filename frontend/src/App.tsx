@@ -1,8 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { BrowserRouter as Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-//import Home from './pages/Home';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -16,33 +14,28 @@ import AssignProject from './components/Mentorship/AssignProject';
 import GrantMentor from './components/Admin/GrantMentor';
 import GrantManager from './components/Admin/GrantManager';
 import UserProfile from './components/Profile/UserProfile';
-import PaystackPayment from './components/Payment/PaystackPayment';
 import Notification from './components/Notification';
-//import NotFound from './pages/NotFound';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        <Switch>
-          {/*<Route path="/"  Component={Home} />*/}
-          <Route path="/login" Component={Login} />
-          <Route path="/register" Component={Register} />
-          <Route path="/dashboard" Component={Dashboard} />
-        <Route path="/projects" Component={ProjectList} />
-          <Route path="/projects/create" Component={CreateProject} />
-          <Route path="/jobs"  Component={JobList} />
-          <Route path="/jobs/create" Component={CreateJob} />
-          <Route path="/mentorship"  Component={MentorshipList} />
-          <Route path="/mentorship/apply" Component={ApplyMentor} />
-          <Route path="/mentorship/assign" Component={AssignProject} />
-          <Route path="/admin/grant-mentor" Component={GrantMentor} />
-          <Route path="/admin/grant-manager" Component={GrantManager} />
-          <Route path="/profile" Component={UserProfile} />
-          {/*<Route path="/payment" Component={PaystackPayment} />*/}
-          <Route path="/notifications" Component={Notification} />
-          {/*<Route Component={NotFound} />*/}
-        </Switch>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/projects" element={<ProjectList />} />
+          <Route path="/projects/create" element={<CreateProject />} />
+          <Route path="/jobs" element={<JobList />} />
+          <Route path="/jobs/create" element={<CreateJob />} />
+          <Route path="/mentorship" element={<MentorshipList />} />
+          <Route path="/mentorship/apply" element={<ApplyMentor />} />
+          <Route path="/mentorship/assign" element={<AssignProject />} />
+          <Route path="/admin/grant-mentor" element={<GrantMentor />} />
+          <Route path="/admin/grant-manager" element={<GrantManager />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/notifications" element={<Notification />} />
+        </Routes>
       </Router>
     </AuthProvider>
   );
