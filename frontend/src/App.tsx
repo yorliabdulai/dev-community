@@ -15,11 +15,16 @@ import GrantMentor from './components/Admin/GrantMentor';
 import GrantManager from './components/Admin/GrantManager';
 import UserProfile from './components/Profile/UserProfile';
 import Notification from './components/Notification';
+import Navbar from './components/shared/Navbar';
+import Footer from './components/shared/Footer';
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
+      <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -36,6 +41,9 @@ const App: React.FC = () => {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/notifications" element={<Notification />} />
         </Routes>
+        </main>
+          <Footer />
+        </div>
       </Router>
     </AuthProvider>
   );
