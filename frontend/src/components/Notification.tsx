@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+//Define the type for a Notification object
+type Notification = {
+  _id: string;
+  message: string;
+};
 
 const Notification = () => {
+  //Use the Notification type for the notifications state
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const { user } = useAuth();
-  const [notifications, setNotifications] = useState([]);
+  
 
   useEffect(() => {
     const fetchNotifications = async () => {
