@@ -17,6 +17,7 @@ import UserProfile from './components/Profile/UserProfile';
 import Notification from './components/Notification';
 import Navbar from './components/shared/Navbar';
 import Footer from './components/shared/Footer';
+import Home from './pages/Home';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           <Navbar />
           <main className="flex-grow">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
