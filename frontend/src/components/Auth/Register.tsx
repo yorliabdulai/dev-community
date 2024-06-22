@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Register = () => {
-  const { register } = useAuth();
+  const { register, loginWithGoogle, loginWithGithub } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +14,22 @@ const Register = () => {
       await register(name, email, password);
     } catch (error) {
       console.error('Registration failed:', error);
+    }
+  };
+
+  const handleGoogleSignup = async () => {
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      console.error('Google signup failed:', error);
+    }
+  };
+
+  const handleGithubSignup = async () => {
+    try {
+      await loginWithGithub();
+    } catch (error) {
+      console.error('Github signup failed:', error);
     }
   };
 
@@ -46,6 +62,20 @@ const Register = () => {
           Register
         </button>
       </form>
+      <div className="mt-4 space-y-2">
+        <button
+          onClick={handleGoogleSignup}
+          className="w-full p-3 flex items-center justify-center bg-red-500 text-white rounded-md hover:bg-red-600"
+        >
+          <FaGoogle className="mr-2" /> Sign Up with Google
+        </button>
+        <button
+          onClick={handleGithubSignup}
+          className="w-full p-3 flex items-center justify-center bg-gray-800 text-white rounded-md hover:bg-gray-900"
+        >
+          <FaGithub className="mr-2" /> Sign Up with GitHub
+        </button>
+      </div>
     </div>
   );
 };
