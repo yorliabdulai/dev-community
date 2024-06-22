@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle, loginWithGithub } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,6 +13,22 @@ const Login = () => {
       await login(email, password);
     } catch (error) {
       console.error('Login failed:', error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      console.error('Google login failed:', error);
+    }
+  };
+
+  const handleGithubLogin = async () => {
+    try {
+      await loginWithGithub();
+    } catch (error) {
+      console.error('Github login failed:', error);
     }
   };
 
@@ -37,6 +54,20 @@ const Login = () => {
           Login
         </button>
       </form>
+      <div className="mt-4 space-y-2">
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full p-3 flex items-center justify-center bg-red-500 text-white rounded-md hover:bg-red-600"
+        >
+          <FaGoogle className="mr-2" /> Login with Google
+        </button>
+        <button
+          onClick={handleGithubLogin}
+          className="w-full p-3 flex items-center justify-center bg-gray-800 text-white rounded-md hover:bg-gray-900"
+        >
+          <FaGithub className="mr-2" /> Login with GitHub
+        </button>
+      </div>
     </div>
   );
 };
