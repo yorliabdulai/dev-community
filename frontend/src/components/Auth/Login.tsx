@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
   const { login, loginWithGoogle, loginWithGithub } = useAuth();
@@ -54,11 +55,17 @@ const Login = () => {
         </button>
       </form>
       <div className="mt-4 space-y-2">
-        <button onClick={handleGoogleLogin} className="w-full p-3 bg-red-500 text-white rounded-md hover:bg-red-600">
-          Login with Google
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full p-3 flex items-center justify-center bg-red-500 text-white rounded-md hover:bg-red-600"
+        >
+          <FaGoogle className="mr-2" /> Login with Google
         </button>
-        <button onClick={handleGithubLogin} className="w-full p-3 bg-gray-800 text-white rounded-md hover:bg-gray-900">
-          Login with Github
+        <button
+          onClick={handleGithubLogin}
+          className="w-full p-3 flex items-center justify-center bg-gray-800 text-white rounded-md hover:bg-gray-900"
+        >
+          <FaGithub className="mr-2" /> Login with GitHub
         </button>
       </div>
     </div>
