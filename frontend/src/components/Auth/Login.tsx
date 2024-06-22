@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle, loginWithGithub } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,6 +12,22 @@ const Login = () => {
       await login(email, password);
     } catch (error) {
       console.error('Login failed:', error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      console.error('Google login failed:', error);
+    }
+  };
+
+  const handleGithubLogin = async () => {
+    try {
+      await loginWithGithub();
+    } catch (error) {
+      console.error('Github login failed:', error);
     }
   };
 
@@ -37,6 +53,14 @@ const Login = () => {
           Login
         </button>
       </form>
+      <div className="mt-4 space-y-2">
+        <button onClick={handleGoogleLogin} className="w-full p-3 bg-red-500 text-white rounded-md hover:bg-red-600">
+          Login with Google
+        </button>
+        <button onClick={handleGithubLogin} className="w-full p-3 bg-gray-800 text-white rounded-md hover:bg-gray-900">
+          Login with Github
+        </button>
+      </div>
     </div>
   );
 };
